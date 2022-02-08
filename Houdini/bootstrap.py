@@ -5,6 +5,24 @@ import logging
 from houdini.constants import ClientType, ConflictResolution, Language
 from houdini.houdini import Houdini
 
+
+with open(".env", "r") as f:
+    settings = {}
+    env = f.read().splitlines()
+    for line in env:
+        if line.startswith("#"):
+            continue
+        if "=" not in line:
+            continue
+        key, value = line.split("=")
+        try:
+            int(value)
+            value = int(value)
+        except ValueError:
+            pass
+        settings[key] = value
+
+
 if __name__ == '__main__':
     logger = logging.getLogger('houdini')
 
@@ -52,30 +70,30 @@ if __name__ == '__main__':
     database_group = parser.add_argument_group('database')
     database_group.add_argument('-da', '--database-address', action='store',
                                 dest='database_address',
-                                default='localhost',
+                                default=settings["DATABASE_HOST"],
                                 help='Postgresql database address')
     database_group.add_argument('-du', '--database-username', action='store',
                                 dest='database_username',
-                                default='postgres',
+                                default=settings["DATABASE_USERNAME"],
                                 help='Postgresql database username')
     database_group.add_argument('-dp', '--database-password', action='store',
                                 dest='database_password',
-                                default='password',
+                                default=settings["DATABASE_PASSWORD"],
                                 help='Postgresql database password')
     database_group.add_argument('-dn', '--database-name', action='store',
                                 dest='database_name',
-                                default='postgres',
+                                default=settings["DATABASE_NAME"],
                                 help='Postgresql database name')
 
     redis_group = parser.add_argument_group('redis')
     redis_group.add_argument('-ra', '--redis-address', action='store',
                              dest='redis_address',
-                             default='localhost',
+                             default=settings["REDIS_HOST"],
                              help='Redis server address')
     redis_group.add_argument('-rp', '--redis-port', action='store',
                              dest='redis_port',
                              type=int,
-                             default=6379,
+                             default=settings['REDIS_PORT'],
                              help='Redis server port')
 
     command_group = parser.add_argument_group('commands')
@@ -118,7 +136,7 @@ if __name__ == '__main__':
                               default='legacy',
                               help='Default client when multi-client is off')
     client_group.add_argument('-k', '--auth-key', action='store',
-                              default='houdini',
+                              default=settings["AUTH_KEY"],
                               help='Static key to use in place of the deprecated random key')
     client_group.add_argument('-kt', '--auth-ttl', action='store', type=int, default=3000,
                               help='Auth key TTL (seconds)')
