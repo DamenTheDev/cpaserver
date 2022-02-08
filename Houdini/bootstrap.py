@@ -20,7 +20,9 @@ with open(".env", "r") as f:
             value = int(value)
         except ValueError:
             pass
+        print(key)
         settings[key] = value
+        
 
 
 if __name__ == '__main__':
@@ -156,6 +158,7 @@ if __name__ == '__main__':
 
     factory_instance = Houdini(args)
     try:
-        asyncio.run(factory_instance.start())
+        asyncio.get_event_loop().run_until_complete(factory_instance.start())
+        asyncio.get_event_loop().run_forever()
     except KeyboardInterrupt:
         logger.info('Shutting down...')
