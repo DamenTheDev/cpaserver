@@ -141,6 +141,8 @@ class Houdini:
 
             self.cache = Cache(maxsize=None, ttl=self.config.cache_expiry)
 
+            await self.logger.info('Cache cleared')
+
             self.client_class = Penguin
             self.penguin_string_compiler = PenguinStringCompiler()
             self.anonymous_penguin_string_compiler = PenguinStringCompiler()
