@@ -134,6 +134,7 @@ class Houdini:
 
         pool = aioredis.ConnectionPool.from_url(f'redis://{self.config.redis_user}:{self.config.redis_password}@{self.config.redis_address}:{self.config.redis_port}')
         self.redis = aioredis.Redis(connection_pool=pool)
+        self.logger.info('Connected to Redis')
 
         if self.config.type == 'world':
             await self.redis.delete(f'houdini.players.{self.config.id}')
@@ -141,7 +142,7 @@ class Houdini:
 
             self.cache = Cache(maxsize=None, ttl=self.config.cache_expiry)
 
-            await self.logger.info('Cache cleared')
+            self.logger.info('Cache cleared')
 
             self.client_class = Penguin
             self.penguin_string_compiler = PenguinStringCompiler()
