@@ -20,7 +20,6 @@ with open(".env", "r") as f:
             value = int(value)
         except ValueError:
             pass
-        print(key)
         settings[key] = value
         
 
