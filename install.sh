@@ -1,3 +1,6 @@
+wget https://bootstrap.pypa.io/get-pip.py
+python3 get-pip.py
+rm get-pip.py
 git clone https://github.com/DamenTheDev/cpaserver
 mv cpaserver/* .
 rm -r cpaserver/
