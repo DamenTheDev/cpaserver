@@ -86,6 +86,10 @@ if __name__ == '__main__':
                                 dest='database_name',
                                 default=settings["DATABASE_NAME"],
                                 help='Postgresql database name')
+    database_group.add_argument('-dP', '--database-port', action='store',
+                                dest='database_port',
+                                default=settings["DATABASE_PORT"],
+                                help='Postgresql database port')
 
     redis_group = parser.add_argument_group('redis')
     redis_group.add_argument('-ra', '--redis-address', action='store',
