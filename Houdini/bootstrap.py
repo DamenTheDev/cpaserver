@@ -102,14 +102,12 @@ if __name__ == '__main__':
                              help='Redis server port')
     redis_group.add_argument('-rU', '--redis-user', action='store',
                              dest='redis_user',
-                             type=int,
                              default=settings['REDIS_USERNAME'],
-                             help='Redis server port')
+                             help='Redis server username')
     redis_group.add_argument('-rP', '--redis-password', action='store',
                              dest='redis_password',
-                             type=int,
                              default=settings['REDIS_PASSWORD'],
-                             help='Redis server port')
+                             help='Redis server password')
 
     command_group = parser.add_argument_group('commands')
     command_group.add_argument('-cp', '--command-prefix', action='store', dest='command_prefix',
