@@ -137,6 +137,7 @@ class Houdini:
         self.logger.info('Connected to Redis')
 
         if self.config.type == 'world':
+            self.logger.info('Clearing Redis')
             await self.redis.delete(f'houdini.players.{self.config.id}')
             await self.redis.hset(f'houdini.population', self.config.id, 0)
 
