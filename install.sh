@@ -6,3 +6,4 @@ mv cpaserver/* .
 rm -r cpaserver/
 python3 -m pip install -r requirements.txt
 chmod +x login.sh
+chmod +x install.sh

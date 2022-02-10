@@ -132,7 +132,7 @@ class Houdini:
 
         self.logger.info('Booting Houdini')
 
-        pool = aioredis.ConnectionPool.from_url(f'redis://{self.config.redis_user}:{self.config.redis_password}@{self.config.redis_address}:{self.config.redis_port}')
+        pool = aioredis.ConnectionPool.from_url(f'rediss://{self.config.redis_address}:{self.config.redis_port}')
         self.redis = aioredis.Redis(connection_pool=pool)
         self.logger.info('Connected to Redis')
 
