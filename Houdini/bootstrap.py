@@ -19,9 +19,9 @@ with open(".env", "r") as f:
             int(value)
             value = int(value)
         except ValueError:
-            pass
-        settings[key] = value.strip()
-        print(f"{key} = \"{value.strip()}\"")
+            value = value.strip()
+        settings[key] = value
+        print(f"{key} = \"{value}\"")
 
 
 if __name__ == '__main__':
