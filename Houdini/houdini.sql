@@ -11649,7 +11649,7 @@ INSERT INTO penguin (id, username, nickname, approval_en, password, email, color
  (28, 'merry walrus', 'Merry Walrus', TRUE, '$2b$12$CCYijGFRZyymIJWWNpkmP.pysAEN5E1mRwPtrjIDmTR3LnhKdJeBK', '', 1, NULL);
  
 INSERT INTO penguin (username, nickname, approval_en, active, password, email, color) VALUES
-  ('basil', 'Basil', TRUE, TRUE, '$2b$12$CCYijGFRZyymIJWWNpkmP.pysAEN5E1mRwPtrjIDmTR3LnhKdJeBK', 'basil@solero.me', 1);
+  ('basil', 'Basil', TRUE, TRUE, '$2a$12$wjUg33G.oKOnp9/YH3re7uN1ISJz4MfrN1wfYUoMUP7JiwtNo5DQK', 'basil@solero.me', 1);
   
 INSERT INTO penguin_item (penguin_id, item_id) VALUES
   (101, 1);

@@ -21,7 +21,6 @@ with open(".env", "r") as f:
         except ValueError:
             value = value.strip()
         settings[key] = value
-        print(f"{key} = \"{value}\"")
 
 
 if __name__ == '__main__':

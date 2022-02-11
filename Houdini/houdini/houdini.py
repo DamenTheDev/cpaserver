@@ -125,14 +125,14 @@ class Houdini:
             self.config.port
         )
 
-        await self.db.set_bind('postgresql://{}:{}@{}:{}/{}'.format(
+        await self.db.set_bind('postgresql://{}:{}@{}:{}/{}?sslmode=require'.format(
             self.config.database_username, self.config.database_password,
             self.config.database_address, self.config.database_port,
             self.config.database_name))
 
         self.logger.info('Booting Houdini')
 
-        pool = aioredis.ConnectionPool.from_url(f'rediss://{self.config.redis_user}:{self.config.redis_password}@{self.config.redis_address}:{self.config.redis_port}')
+        pool = aioredis.ConnectionPool.from_url(f'rediss://{self.config.redis_user}:{self.config.redis_password}@{self.config.redis_address}:{self.config.redis_port}?sslmode=require')
         self.redis = aioredis.Redis(connection_pool=pool)
         self.logger.info('Connected to Redis')
 
