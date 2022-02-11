@@ -21,7 +21,6 @@ with open(".env", "r") as f:
         except ValueError:
             pass
         settings[key] = value
-        
 
 
 if __name__ == '__main__':
