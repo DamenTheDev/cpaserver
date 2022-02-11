@@ -20,7 +20,8 @@ with open(".env", "r") as f:
             value = int(value)
         except ValueError:
             pass
-        settings[key] = value
+        settings[key] = value.strip()
+        print(f"{key} = \"{value.strip()}\"")
 
 
 if __name__ == '__main__':
