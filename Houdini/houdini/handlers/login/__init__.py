@@ -54,4 +54,4 @@ async def get_server_presence(p, pdata):
                 if any(online_buddies):
                     buddy_worlds.append(str(int(server_id)))
 
-    return '|'.join(world_populations), '|'.join(buddy_worlds)
+    return '&'.join(world_populations), '&'.join(buddy_worlds)
